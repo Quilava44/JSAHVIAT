@@ -2,6 +2,7 @@
 package zkouskovyprojekt;
 
 import Interface.JFrame;
+import Program.Actions;
 
 /**
  *
@@ -11,8 +12,7 @@ public class ZkouskovyProjekt {
 
     public static void main(String[] args) {
 
-        JFrame frame = new JFrame();
-        frame.setVisible(true);
+        Actions action = new Actions();
         
     }
     

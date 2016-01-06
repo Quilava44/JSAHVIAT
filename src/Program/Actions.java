@@ -19,18 +19,17 @@ public class Actions {
     private String date;
     private float speed;
     private DefaultTableModel model;
-    private JFrame frame;
+    private JFrame frame = new JFrame();
  
     
     public Actions() {
-        
+        frame.setVisible(true);
     }
     
     public Actions(String spz, String date, float speed) {
     this.spz = spz;
     this.date = date;
     this.speed = speed;
-    frame = new JFrame();
     
     }
     
@@ -50,7 +49,7 @@ public class Actions {
         model.addRow(new Object[]{this.spz, this.date, this.speed, speeding()});
         
         frame.fungujestypico.setText("" + frame.tbl_list.getRowCount());
-        frame.validate();
+        frame.setVisible(true);
         }
     
     /**
