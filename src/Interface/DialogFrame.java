@@ -6,6 +6,7 @@
 package Interface;
 
 import Program.Actions;
+import zkouskovyprojekt.ZkouskovyProjekt;
 
 /**
  *
@@ -126,9 +127,10 @@ public class DialogFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cxlActionPerformed
 
     private void btn_daddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_daddActionPerformed
-        Actions a = new Actions(txt_spz.getText(), txt_date.getText(), (int)picker_speed.getValue());
-        a.Add();
-        this.dispose();
+
+       Actions a = ZkouskovyProjekt.action;
+       a.Add(txt_spz.getText(), txt_date.getText(), (int)picker_speed.getValue());
+       this.dispose();
     }//GEN-LAST:event_btn_daddActionPerformed
 
     /**

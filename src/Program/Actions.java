@@ -6,9 +6,14 @@
 package Program;
 
 import Interface.JFrame;
+import zkouskovyprojekt.ZkouskovyProjekt;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import java.io.FileWriter;
+import java.util.Vector;
+import java.util.List;
+import java.util.ArrayList;
 /**
  *
  * @author Admin
@@ -19,38 +24,61 @@ public class Actions {
     private String date;
     private float speed;
     private DefaultTableModel model;
-    private JFrame frame = new JFrame();
- 
+    private JFrame frame;
+    
+    private FileWriter write;
+    private static final String header = "SPZ, Date, Speed, Speeding";
+    
+    private Vector data;
+    private Vector row;
+    private List rows;
+    
+    private int help = 0;
     
     public Actions() {
+        frame = new JFrame();
         frame.setVisible(true);
     }
     
-    public Actions(String spz, String date, float speed) {
-    this.spz = spz;
-    this.date = date;
-    this.speed = speed;
+    public String speeding(float speed) {
     
-    }
-    
-    public String speeding() {
-    
-        if(this.speed > 90)
+        if(speed > 90)
             return "Yes";
         else
             return "No";
         
     }
     
-    public void Add(){
-    
-        
+    public void Add(String spz, String date, float speed){
+ 
         model = (DefaultTableModel)frame.tbl_list.getModel();
-        model.addRow(new Object[]{this.spz, this.date, this.speed, speeding()});
+        model.addRow(new Object[]{spz, date, speed, speeding(speed)});
         
-        frame.fungujestypico.setText("" + frame.tbl_list.getRowCount());
-        frame.setVisible(true);
         }
+    
+    public void Delete(int rowID) {
+        model.removeRow(rowID);
+    }
+    
+   /* public void Export(){
+    
+        try {
+        write = new FileWriter("data.csv");
+        write.append(header);
+        data = model.getDataVector();
+        rows = new ArrayList(frame.tbl_list.getRowCount());
+        for (Object v : data){
+        row = (Vector)data.elementAt(help);
+        rows.add(row);
+        help++;
+        }
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        
+        
+    }*/
     
     /**
      * @return the spz
